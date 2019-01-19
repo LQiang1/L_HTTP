@@ -1,0 +1,72 @@
+g++ -o HttpdServer HttpdServer.cc -lpthread
+In file included from HttpdServer.cc:1:0:
+HttpdServer.hpp:4:27: 警告：缺少结尾的 " 字符 [默认启用]
+ #include"ProtocolUtil.hpp""
+                           ^
+HttpdServer.hpp:4:27: 警告：#include 指示的末尾有多余的标识符 [默认启用]
+In file included from HttpdServer.hpp:4:0,
+                 from HttpdServer.cc:1:
+ProtocolUtil.hpp:23:1: 错误：类定义后需要‘;’
+ }
+ ^
+ProtocolUtil.hpp:34:13: 错误：expected ‘;’ at end of member declaration
+   ~Response()
+             ^
+ProtocolUtil.hpp:36:1: 错误：类定义后需要‘;’
+ }
+ ^
+ProtocolUtil.hpp: 在构造函数‘Response::Response()’中:
+ProtocolUtil.hpp:32:19: 错误：expected ‘(’ before ‘:’ token
+   Response():blank:("\n")
+                   ^
+ProtocolUtil.hpp:32:19: 错误：expected ‘{’ before ‘:’ token
+ProtocolUtil.hpp: 在静态成员函数‘static void* Entry::RequestHander(void*)’中:
+ProtocolUtil.hpp:81:21: 错误：‘arg_’在此作用域中尚未声明
+    int sock_ = (int)arg_;
+                     ^
+ProtocolUtil.hpp:86:11: 错误：‘class Connet’没有名为‘RecvOneline’的成员
+    conn_->RecvOneline(rq_->rq_line);
+           ^
+ProtocolUtil.hpp:91:11: 错误：‘rsp_’在此作用域中尚未声明
+    delete rsp_;
+           ^
+In file included from HttpdServer.cc:1:0:
+HttpdServer.hpp: 在成员函数‘void HttpdServer::InitServer()’中:
+HttpdServer.hpp:21:7: 错误：‘listen_Sock’在此作用域中尚未声明
+    if(listen_Sock < 0){
+       ^
+HttpdServer.hpp:22:9: 错误：‘LOG’在此作用域中尚未声明
+     LOG();
+         ^
+HttpdServer.hpp:24:4: 错误：expected ‘;’ before ‘}’ token
+    }
+    ^
+HttpdServer.hpp:27:15: 错误：‘listen_Sock’在此作用域中尚未声明
+    setsockopt(listen_Sock,SOL_SOCKET,SO_REUSEADDR,&opt_,sizeof(opt_));
+               ^
+HttpdServer.hpp:29:23: 错误：聚合‘HttpdServer::InitServer()::sockaddr_in local_’类型不完全，无法被定义
+    struct sockaddr_in local_;
+                       ^
+HttpdServer.hpp:31:32: 错误：‘htons’在此作用域中尚未声明
+    local_.sin_port = htons(port);
+                                ^
+HttpdServer.hpp:32:29: 错误：‘INADDR_ANY’在此作用域中尚未声明
+    local_.sin_addr.s_addr = INADDR_ANY;
+                             ^
+HttpdServer.hpp:35:9: 错误：‘LOG’在此作用域中尚未声明
+     LOG();
+         ^
+HttpdServer.hpp:40:9: 错误：‘LOG’在此作用域中尚未声明
+     LOG();
+         ^
+HttpdServer.hpp: 在成员函数‘void HttpdServer::Start()’中:
+HttpdServer.hpp:48:24: 错误：聚合‘HttpdServer::Start()::sockaddr_in peer_’类型不完全，无法被定义
+     struct sockaddr_in peer_;
+                        ^
+HttpdServer.hpp:52:10: 错误：‘LOG’在此作用域中尚未声明
+      LOG();
+          ^
+HttpdServer.hpp:57:58: 警告：将一个整数转换为大小不同的指针 [-Wint-to-pointer-cast]
+     pthread_create(&tid,NULL,Entry::RequestHander,(void*)sock_);
+                                                          ^
+make: *** [HttpdServer] 错误 1
